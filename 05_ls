@@ -1,7 +1,7 @@
 if [[ -x `which gls` ]]; then
 	alias rls=`which ls`
 	alias ls='gls -h --color=auto '
-elif [[ $(uname) == 'FreeBSD' ]]; then
+elif [[ $(uname) == 'FreeBSD' || $OSTYPE[1,6] == "darwin" ]]; then
     export CLICOLOR="yes"
     export LSCOLORS='ExfxcxdxbxEgEdabagacad'    
 elif [[ -n `ls --color` && $? == 0 ]]; then 
