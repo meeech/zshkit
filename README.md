@@ -1,5 +1,7 @@
-Matt Foster's zshkit fork
--------------------------
+Meeech's fork of Matt Foster's zshkit fork
+------------------------------------------
+
+Some things will be tailored to my osx env. 
 
 An easily extensible collection of `stuff` for zsh.
 
