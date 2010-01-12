@@ -42,7 +42,7 @@ if [[ -x `which git` ]]; then
     status_color=$fg[green]
     status_indicator='•'
     #blank - need padding else breaks prompt.
-    unmerged_indicator = ' '
+    unmerged_indicator=' '
     
     branch=$(echo $gstatus | head -n 1 | sed 's/^# On branch //')
     if [[ $branch == '# Not currently on any branch.' ]]; then
@@ -61,7 +61,7 @@ if [[ -x `which git` ]]; then
         }
 
     		if zgit_hasuntracked; then
-    		  unmerged_indicator=$fg[blue]'?'
+    		  $unmerged_indicator=$fg[blue]'?'
     		fi
         
         if [[ $no_branch = 1 ]] { 
