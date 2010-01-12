@@ -1,4 +1,7 @@
 if [[ -x `which git` ]]; then
+  autoload -U zgitinit
+  zgitinit
+    
 	git_enable=1
 	function git-branch-name () {
 		git branch 2> /dev/null | grep '^\*' | sed 's/^\*\ //'
@@ -47,12 +50,19 @@ if [[ -x `which git` ]]; then
     if [[ $git_enable = 1 ]]; then
       gstatus=$(git status 2> /dev/null)
       branch=$(echo $gstatus | head -n 1 | sed 's/^# On branch //')
+      
       dirty=$(echo $gstatus | sed 's/^#.*$//' | tail -n 2 | grep 'nothing to commit (working directory clean)'; echo $?)
       if [[ x$branch != x ]]; then
         if [[ $dirty = 1 ]] { 
           status_color=$fg[red]
           status_indicator='∆' 
         }
+
+    		if zgit_hasuntracked; then
+    		  status_indicator='•' 
+          status_color=$fg[magenta]
+    		fi
+        
         if [[ $no_branch = 1 ]] { 
           status_color=$bg[red]
           status_indicator='Ø' 
