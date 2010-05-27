@@ -90,6 +90,27 @@ if [[ -x `which git` ]]; then
 		git config branch.$branch.merge refs/heads/$branch
 		echo "tracking origin/$tracking"
 	}
+
+    function git-ignore
+    {
+    	if [ -z "$1" ]; then 
+    		echo filename needed
+    	fi
+
+    	git update-index --assume-unchanged $1
+    }
+
+    function git-noignore
+    {
+    	if [ -z "$1" ]; then 
+    		echo filename needed
+    	fi
+
+    	git update-index --no-assume-unchanged $1
+    }
+
+	
+	
 	function github-init () {
 		git config branch.$(git-branch-name).remote origin
 		git config branch.$(git-branch-name).merge refs/heads/$(git-branch-name)
